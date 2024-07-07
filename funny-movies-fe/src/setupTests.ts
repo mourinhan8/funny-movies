@@ -1,9 +1,10 @@
 import '@testing-library/jest-dom';
 import 'isomorphic-fetch';
-import { TextEncoder, TextDecoder } from 'util';
 
-global.TextEncoder = TextEncoder;
-global.TextDecoder = TextDecoder as typeof global.TextDecoder;
+// import { TextEncoder, TextDecoder } from 'util';
+
+// global.TextEncoder = TextEncoder;
+// global.TextDecoder = TextDecoder as typeof global.TextDecoder;
 
 Object.defineProperty(window, 'matchMedia', {
   writable: true,

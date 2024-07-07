@@ -1,24 +1,8 @@
 // import React from "react";
-import { render, screen, cleanup, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import MovieCard from "../MovieCard";
-import { server } from '../../mocks/node';
 import HomePage from '../../pages/homePage';
 import { BrowserRouter as Router } from "react-router-dom";
-
-// Establish API mocking before all tests.
-beforeAll(() => {
-  server.listen()
-});
-
-
-afterEach(() => {
-  server.resetHandlers()
-  cleanup();
-});
-
-afterAll(() => {
-  server.close();
-})
 
 test('should render MovieCard', () => {
   const movieData = {
@@ -38,16 +22,16 @@ test('should render MovieCard', () => {
   expect(screen.getByText('Shared by: test@example.com')).toBeInTheDocument();
   expect(screen.getByText('Description: This is movie 1')).toBeInTheDocument();
 });
-
 test('HomePage', async () => {
   render(
     <Router>
       <HomePage likedMovies={[]} dislikedMovies={[]} isAuth={false} />
     </Router>
   );
-
-  await waitFor(() => {
-    expect(screen.queryByText('Test Movie')).not.toBeInTheDocument();
-    expect(screen.queryByText('Shared by: test@example.com')).not.toBeInTheDocument();
-  });
+  const titleDiv = await screen.findByText('Test Movie');
+  expect(titleDiv).toBeInTheDocument();
+  const descriptionDiv = await screen.findByText('Description: This is a test movie.');
+  expect(descriptionDiv).toBeInTheDocument();
+  const shareByDiv = await screen.findByText('Shared by: test@example.com');
+  expect(shareByDiv).toBeInTheDocument();
 });

@@ -11,6 +11,21 @@
     "preview": "vite preview",
     "test": "jest"
   },
+  "jest": {
+    "resetMocks": false,
+    "testEnvironment": "jsdom",
+    "transform": {
+      "^.+\\.(t|j)sx?$": "@swc/jest",
+      "^.+\\.(t|j)s?$": "@swc/jest"
+    },
+    "moduleNameMapper": {
+      "\\.(css)$": "identity-obj-proxy",
+      "^.+\\.svg$": "jest-svg-transformer"
+    },
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupTests.ts"
+    ]
+  },
   "dependencies": {
     "@ant-design/icons": "^5.3.7",
     "@pollyjs/core": "^6.0.6",
