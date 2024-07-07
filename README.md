@@ -59,5 +59,5 @@ Configuration test case of ```funny-movies-fe``` in path
 funny-movies-fe/src/components/_tests_
 ```
 # Live Preview
-Check live preview here []()
+Check live preview here [https://funny-movies-fe.onrender.com/](https://funny-movies-fe.onrender.com/)
 
