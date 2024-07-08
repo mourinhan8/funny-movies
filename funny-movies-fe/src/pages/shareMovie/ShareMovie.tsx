@@ -27,7 +27,7 @@ const ShareMovie: React.FC<ShareMovieProps> = ({ socket }) => {
         description: values.description,
       });
       message.success('Movie shared successfully');
-      socket.emit('createdMovie', { title: values.title });
+      socket?.emit('createdMovie', { title: values.title });
       navigate('/');
     } catch (error) {
       console.log(error);
