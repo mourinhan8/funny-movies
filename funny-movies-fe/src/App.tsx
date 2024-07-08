@@ -106,7 +106,7 @@ const App: React.FC = () => {
       <Router>
         <div className="App flex flex-col">
           <Header isAuth={isAuth} email={email} onLogout={handleLogout} />
-          <div className="flex-1 overflow-y-auto">
+          <div className="flex-1">
             <Routes>
               <Route path="/"
                 element={
