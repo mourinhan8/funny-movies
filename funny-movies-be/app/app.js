@@ -1,12 +1,11 @@
 const dotenv = require("dotenv");
 const path = require("path");
-const envFilePath = path.resolve(__dirname, `.env${process.env.NODE_ENV ? `.${process.env.NODE_ENV}` : ''}`);
+const envFilePath = path.resolve(__dirname, '..', `.env${process.env.NODE_ENV ? `.${process.env.NODE_ENV}` : ''}`);
 const express = require("express");
 const cors = require("cors");
 const logger = require("morgan");
-const { connectDB } = require("./config/db");
+const { connectDB } = require("../config/db");
 dotenv.config({ path: envFilePath });
-
 const app = express();
 
 const DB_URL = process.env.MONGO_URL;
@@ -26,7 +25,7 @@ app.use(logger('dev'));
 app.get("/", (req, res) => res.send("API running"));
 const BASE_URL = "/api/v1";
 // Define Routes
-app.use(`${BASE_URL}/user`, require("./routes/user"));
-app.use(`${BASE_URL}/movie`, require("./routes/movie"));
+app.use(`${BASE_URL}/user`, require("../routes/user"));
+app.use(`${BASE_URL}/movie`, require("../routes/movie"));
 
 module.exports = app;

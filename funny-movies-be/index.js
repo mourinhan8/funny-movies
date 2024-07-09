@@ -4,28 +4,10 @@ const { createServer } = require("http");
 const { Server } = require("socket.io");
 const authSocket = require("./middleware/authSocket");
 const envFilePath = path.resolve(__dirname, `.env${process.env.NODE_ENV ? `.${process.env.NODE_ENV}` : ''}`);
-const app = require("./app");
+const app = require("./app/app");
 dotenv.config({ path: envFilePath });
 
 const PORT = process.env.PORT || 4040;
-
-// console.log(DB_URL);
-// // Connection check with db
-// connectDB(DB_URL);
-// app.use(
-//   cors({
-//     origin: "*",
-//   })
-// );
-// // Body parser middleware
-// app.use(express.json({ extended: false }));
-// app.use(logger('dev'));
-
-// app.get("/", (req, res) => res.send("API running"));
-// const BASE_URL = "/api/v1";
-// // Define Routes
-// app.use(`${BASE_URL}/user`, require("./routes/user"));
-// app.use(`${BASE_URL}/movie`, require("./routes/movie"));
 
 const server = createServer(app);
 const io = new Server(server, {
