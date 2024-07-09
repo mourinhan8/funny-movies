@@ -41,7 +41,7 @@ const App: React.FC = () => {
   }, [])
 
   useEffect(() => {
-    if (isAuth) {
+    if (isAuth && !socketRef.current) {
       const token = localStorage.getItem("token")
       socketRef.current = io(`${process.env.VITE_APP_SOCKET_URL}`, {
         auth: {
