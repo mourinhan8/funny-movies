@@ -44,6 +44,14 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+let serverInstance;
+
+if (!serverInstance) {
+  serverInstance = server.listen(PORT,
+    () => console.log(`Server started on port ${PORT}`
+    ));
+} else {
+  console.log('Server is already running.');
+}
 
 module.exports = server; 
