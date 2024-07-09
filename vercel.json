@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "funny-movies-be/index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "rewrites": [
+    {
+      "src": "/(.*)",
+      "dest": "/funny-movies-be/index.js"
+    }
+  ]
+}
