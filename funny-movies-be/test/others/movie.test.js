@@ -2,7 +2,7 @@ const chai = require('chai');
 const expect = chai.expect;
 const bcrypt = require('bcryptjs');
 const chaiHttp = require('chai-http');
-const { app } = require('../../server');
+const app = require('../../app');
 const { closeDBConnection } = require('../../config/db');
 const Movie = require('../../models/movieModel');
 const User = require('../../models/userModel');
@@ -127,8 +127,8 @@ describe('Movies API Tests', () => {
       .then(res => {
         expect(res).to.have.status(200);
         expect(res.body.data
-          .map(movie => ({title: movie.title})))
-          .to.deep.equal([{title: 'New Film 2'}, {title: 'New Film 1'}]);
+          .map(movie => ({ title: movie.title })))
+          .to.deep.equal([{ title: 'New Film 2' }, { title: 'New Film 1' }]);
         done();
       })
       .catch(err => {

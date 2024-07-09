@@ -1,7 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const { app } = require('../../server');
+const app = require('../../app');
 
 //chai-http used to send async requests to our app
 const http = require('chai-http');
