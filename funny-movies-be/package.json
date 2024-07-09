@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "backend for funny movie",
   "main": "index.js",
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
     "test-user": "NODE_ENV=test mocha --timeout 10000 test/user/user.test.js",
     "test-others": "NODE_ENV=test mocha --timeout 10000 test/others/*.test.js",
