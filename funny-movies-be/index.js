@@ -5,6 +5,7 @@ const { Server } = require("socket.io");
 const authSocket = require("./middleware/authSocket");
 const envFilePath = path.resolve(__dirname, `.env${process.env.NODE_ENV ? `.${process.env.NODE_ENV}` : ''}`);
 const app = require("./app/app");
+const { closeDBConnection } = require("./config/db");
 dotenv.config({ path: envFilePath });
 
 const PORT = process.env.PORT || 4040;
@@ -53,5 +54,9 @@ if (!serverInstance) {
 } else {
   console.log('Server is already running.');
 }
+
+process.on('SIGINT', () => {
+  closeDBConnection();
+});
 
 module.exports = server; 
