@@ -23,7 +23,6 @@
     "types": ["node"]
   },
   "include": ["src", "src/setupTests.ts"],
-  "exclude": ["src/__mocks__/axios.ts"],
   "references": [{ "path": "./tsconfig.node.json" }],
   "types": ["node", "jest", "@testing-library/jest-dom"]
 }
